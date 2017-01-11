@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-import store from './store';
+import {Provider} from 'react-redux';
+import createStore from './store/createStore';
 import TutorialContainer from './containers/tutorialContainer';
 
+const store = createStore();
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <TutorialContainer store={store}/>
-      </div>
+      <Provider store={store} >
+        <TutorialContainer/>
+      </Provider>
     );
   }
 }
+
+
 
 export default App;

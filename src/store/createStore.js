@@ -7,8 +7,10 @@ const initialState = {counterReducer:0,titleReducer:"Title"};
 
 const logger = createLogger();
 
-export default createStore(
-	rootReducer,
-	initialState,
-	applyMiddleware(logger)
-);
+export default function configureStore(){
+	return createStore(
+		rootReducer,
+		initialState,
+		applyMiddleware(logger)
+	);
+}
