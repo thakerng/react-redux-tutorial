@@ -6,16 +6,7 @@ import { bindActionCreators } from 'redux'
 import {CounterDisplay} from '../components/counterDisplay';
 import {TitleDisplay}  from '../components/titleDisplay';
 
-@connect(
-	state => ({
-    counter:state.counterReducer,
-    title:state.titleReducer
-  }),
-  dispatch=>({
-		actions: bindActionCreators({...counterAction,...titleAction},dispatch)
-	})
-)
-export default class EasyTutorialContainer extends Component {
+class EasyTutorialContainer extends Component {
 
 	  handleTitleChange(e){
 	   	this.props.actions.updateTitle(e.target.value);
@@ -36,5 +27,15 @@ export default class EasyTutorialContainer extends Component {
 	  }
 }
 
+
+export default connect(
+	state => ({
+    counter:state.counterReducer,
+    title:state.titleReducer
+  }),
+  dispatch=>({
+		actions: bindActionCreators({...counterAction,...titleAction},dispatch)
+	})
+)(EasyTutorialContainer);
 //export default TutorialContainer;
 
